@@ -5,9 +5,12 @@ from specgram import png_specgram
 from specgram import max_freqency_limit,max_height,max_width
 from max_list import calc_matches,max_sub_list_with_penality
 from find_peaks import find_peaks
-from max_list import max_sub_list_with_penality
-from Final_answer import Final_answer
+from max_list import max_sub_list_with_penality , checkForMatch
 from song_resize import trim_leading_silence
+from prepare_song_hash import run_length_encoding
+
+
+
 
 def check_for_match(file_path):
     song_path = ''
@@ -32,29 +35,31 @@ def check_for_match(file_path):
         song_part_name = song_path+'/'+song_name +'.'+extension
         song_part.export(song_part_name)
         png_specgram(song_part_name)
-        ans_x,ans_y =find_peaks(song_path+'/'+song_name +'.png')
+        ans_y =find_peaks(song_path+'/'+song_name +'.png')
         #ans_y is hashed info
         matched = 0
+        song_hash_char , song_hash_count = run_length_encoding(ans_y)
         with open('song_hashes.txt','r') as file:
             current_song_name = file.readline()
-            current_hash = file.readline() 
+            current_hash_char = file.readline() 
+            current_hash_count = file.readline()
+            current_hash_char = [x for x in current_hash_char]
+            current_hash_count = [int(x) for x in current_hash_count.split()]
             matched = 0
-            while(current_song_name and  matched ==0):
+            while(current_song_name and  matched ==0):      
                 print('checking with ',current_song_name)
-                result = max_sub_list_with_penality(ans_y,current_hash)
+                result = checkForMatch(current_hash_char,song_hash_char,current_hash_count,song_hash_count)
                 if(result == True):
-                    # try:
-                    #     current_song_name,extension = current_song_name.rsplit('.')
-                    # except:
-                    #     extension = ''
                     print('the song is matched with ', current_song_name) 
                     matched =1
                     Final_answer = True
                 current_song_name = file.readline()
-                current_hash = file.readline()     
+                current_hash_char = file.readline() 
+                current_hash_count = file.readline()
+                current_hash_char = [x for x in current_hash_char]
+                current_hash_count = [int(x) for x in current_hash_count.split()]  
             if(matched == 0):
                 Final_answer = False
-                print('there was no match in the database') 
         if(matched ==1):
             return
     if(matched == 0):

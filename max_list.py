@@ -61,148 +61,72 @@ def max_sub_list_with_penality(x,y):
                     return True
             else: 
                 matrix[i][j] = 0    
-    # for i in matrix:
-    #     print(i)
-    # print('matches = ',max_matches)
     if(max_matches < min_no_matches_to_verify):
         return False
-    # return max_matches
+
+
+#it is meaningful to start with a match rather than a penalty
+#look for the first match and then start for the check of matches..
+
+
+
+def checkForMatch(list1 , list2 , count1 , count2):
+    numX = len(list1)
+    numY = len(list2)
+    i = 0
+    j = 0
+    allowed_penalty = 5
+    yRange = min(5, numY)
+    xRange = len(list1)
+    maxMatches = 0
+    for yStart in range(0,yRange):
+        for xStart in range(xRange):
+            i = xStart
+            j = yStart
+            xChar = list1[:]
+            yChar = list2[:]
+            xCount = count1[:]
+            yCount = count2[:]
+            if(xChar[i] != yChar[j]):
+                continue
+            matches = 0
+            penalty = 0
+            # print('started with ' , xChar[i])
+            while(i < numX and j < numY):
+                # print(xChar[i] ,xCount[i] ,  yChar[j],yCount[j])
+                if(xChar[i] == yChar[j]):
+                    matches += min(xCount[i] ,yCount[j])
+                else :
+                    penalty += min(xCount[i] ,yCount[j])
+                mini = min(xCount[i] , yCount[j])
+                xCount[i] -= mini
+                yCount[j] -= mini
+                # print('afetr',xChar[i] ,xCount[i] ,  yChar[j],yCount[j])
+                
+                if(penalty > allowed_penalty):
+                    break
+                if(matches >= min_no_matches_to_verify):
+                    return True
+                if(xCount[i]  < yCount[j]):
+                    i += 1
+                elif(yCount[j] < xCount[i]):
+                    j += 1
+                else :
+                    i+=1
+                    j+=1
+            maxMatches = max(maxMatches , matches)
+            # print(maxMatches, penalty)
+            if(matches >= min_no_matches_to_verify):
+                return True
+    return False 
+
+
+
+# ans , num = numMatches(['a','x','y' ,'z'],['a', 'x','y' ,'z'],[3,2,3,4],[5,3,2,4])
+
+# print(num)
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-  
-# def LCSubStr(X, Y, m, n): 
-#     LCSuff = [[0 for k in range(n+1)] for l in range(m+1)] 
-#     result = 0 
-#     for i in range(m + 1): 
-#         for j in range(n + 1): 
-#             if (i == 0 or j == 0): 
-#                 LCSuff[i][j] = 0
-#             elif (X[i-1] == Y[j-1]): 
-#                 LCSuff[i][j] = LCSuff[i-1][j-1] + 1
-#                 result = max(result, LCSuff[i][j]) 
-#             else: 
-#                 LCSuff[i][j] = 0
-#     for i in LCSuff:
-#         print(i)    
-#     return result 
-
-
-
-
-
-
-
-
-
-
-
-
-
-# print(LCSubStr("this","this",4,4))
-
-# def max_list(x,y):
-#     ans_global = 0
-#     m = len(x)
-#     n = len(y)
-#     for i in range(m):
-#         ans_local =0
-#         misses_local = 0
-#         for j in range(n):
-#             if(misses_local > max_no_of_linear_misses):
-#                 break
-#             if x[j] == y[j]:
-#                 ans_local+=1
-#             else:
-#                 misses_local+=1    
-#         if ans_local > ans_global:
-#             ans_global = ans_local
-
-#     return ans_global
-
-# ans  = max_list("nothisisert","thisisshit")
-# print(ans)
-
-
-
-
-
-
-# def LCSubStr(X, Y, m, n): 
-      
-#     LCSuff = [[0 for k in range(n+1)] for l in range(m+1)] 
-#     result = 0 
-#     for i in range(m + 1): 
-#         for j in range(n + 1): 
-#             if (i == 0 or j == 0): 
-#                 LCSuff[i][j] = 0
-#             elif (X[i-1] == Y[j-1]): 
-#                 LCSuff[i][j] = LCSuff[i-1][j-1] + 1
-#                 result = max(result, LCSuff[i][j]) 
-#             else: 
-#                 LCSuff[i][j] = 0
-#     return result 
-
-
-# x = 'nothisisshitert'
-# y = 'thisisshit'
-# print(LCSubStr(x,y,len(x),len(y)))
-
-
-
-
-# def max_random_list(x_time,x_freq,y_time,y_freq):
-#     ans=0
-#     m = len(x_time) #as x_freq and x_time have same size..
-#     n = len(y_time) 
-#     for num1 in range(min_no_to_check) :
-#         i = random.randrange(0,m)   
-#         while(x_freq[i])
-#         correct_yet = 0
-#         for num2 in range(min_no_matches_to_verify):
-#             j = random.randrange(0,min(abs(n-i),abs(m-i))
-#             if(x[i])
-
-
-"""def diagonally_past(matrix,m,n,row,col):
-    j = col-1
-    i = row-1
-    # last_i = row-1
-    # last_j = col-1
-    penality = 0
-    matches  = 0
-    print('for ',row,col)
-    if(i==0 or j==0):
-        return 0,1
-    while i>0 and j>0:
-        print(i,j)
-        print('matches :',matches,'penality  = ',penality)
-        if(matrix[i][j] ==0 ):
-             penality+=1
-        if penality >allowed_penality :
-            print("returned here ",i,j,matches,penality)
-            return penality,matches
-        # last_i,last_j 
-        else:
-            # last_i = i
-            # last_j = col
-            print('done this')
-            matches+=1
-        i-=1
-        j-=1
-    return penality ,matches
-    # last_i,last_j
-"""

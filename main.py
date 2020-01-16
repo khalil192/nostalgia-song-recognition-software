@@ -9,6 +9,7 @@ from show_songs_in_database import show_songs_in_database
 
 if __name__ == '__main__':
     root = Tk()
+    print('this is going on')
     root.filename =  filedialog.askopenfilename(initialdir = "/Users/khalilshaik/Desktop/spectre",title = "Select file",filetypes = (("mp3 files","*.mp3"),("all files","*.*")))
     fullpath = root.filename
     add_to_database = Button(root,text = 'add song to database',command =partial(add_hash_to_database,fullpath))

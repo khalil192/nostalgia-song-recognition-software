@@ -3,14 +3,6 @@ import numpy  as np
 import matplotlib.pyplot as plt
 from specgram import max_freqency_limit,max_height,max_width
 from max_list import calc_matches,max_sub_list_with_penality
-# a = numpy.array([1, 2])
-
-# a = numpy.append(a, [50, 60], axis = 0)
-# a = numpy.append(a, [3, 4], axis = 0)
-
-# print(a)
-# a.resize(int(a.size/2),2)
-# print(a)
 
 def min(a,b):
     if a<b:
@@ -47,8 +39,6 @@ def hash(filepath):
     ans = np.array([0,0])
     ans_x = np.array([])
     ans_y = np.array([])
-    # print(width,height)
-    # print(il,jl)
     for i in range(0,il):
         for j in range(0,jl):
             i_present = x_skip *i
@@ -77,11 +67,6 @@ def hash(filepath):
 
 
 
-# def find_freq(m,):
-#     #we get normal height in the form of mel frequency 
-#     #convert that height to normal mel frequency then convert it into normal frequency
-#     #
-
 
 def find_peaks(filepath):
     file_rem_path = ""
@@ -93,7 +78,6 @@ def find_peaks(filepath):
     im = Image.open(filepath)
     rgb_im = im.convert('RGB')
     width, height = im.size
-    ans_x = np.array([])
     ans_y = np.array([])    
     for i in range(width):
         max_yet = -1
@@ -103,21 +87,9 @@ def find_peaks(filepath):
             if(r>max_yet):
                 max_yet = r
                 max_j = j
-        if(max_j!=-1):
-            ans_x = np.append(ans_x,[i],axis=0)
-            ans_y = np.append(ans_y,[chr(35 +int(conv_to_freq(max_j)/10))],axis=0)
-    return ans_x,ans_y
-
-
-# ans_x,ans_y = find_peaks('a/a0.png')
-# print(ans_y)
-# bns_x,bns_y = find_peaks('v/v20.png')
-# # print(LCSubStr(ans_y,bns_y,len(ans_y),len(bns_y)))
-# print(max_sub_list_with_penality(ans_y,bns_y))
-# fig,ax = plt.subplots(1)   
-# plt.scatter(ans_x,ans_y)
-# fig.savefig('t/ft2.png', bbox_inches='tight')
-# # plt.show()
+        #########
+        ans_y = np.append(ans_y,[chr(35 +int(conv_to_freq(max_j)/10))],axis=0)
+    return ans_y
 
 
 
