@@ -3,9 +3,10 @@ from pydub import AudioSegment
 from specgram import png_specgram
 from song_resize import song_resize
 from find_peaks import find_peaks
-from max_list import max_sub_list_with_penality,calc_matches,max_sub_list_with_penality
-
-
+import shutil
+import os
+import os.path
+from os import path
 def run_length_encoding(hash):
     # with open('normal.txt','a') as file:
     #     for i in hash:
@@ -39,8 +40,17 @@ def song_hash(song_to_add):
     song_name,extension = song_name.split('.',1)    
     number_of_parts = song_resize(song_to_add)
     hash =[]
+    # if(not path.exists(song_path+'/image_cut')):
+    #     os.mkdir(song_path+'/image_cut')
+    # if(not path.exists(song_path+'/audio_cut')):
+    #     os.mkdir(song_path+'/audio_cut')
+    pwd = os.getcwd()
     for i in range(number_of_parts):
         ans_y = find_peaks(song_path+'/'+song_name+str(i) + '.'+'png')
+        # shutil.move(song_path+ '/' + song_name + str(i) + '.png' ,pwd + '/image_cut/'+  song_name + str(i) + '.png' )
+        # shutil.move(song_path+ '/' + song_name + str(i) +'.'+ extension ,pwd +'/audio_cut/' + song_name + str(i) + '.'+extension)
+        os.remove(song_path+ '/' +song_name + str(i) + '.png')
+        os.remove(song_path+ '/' +song_name + str(i) +'.'+ extension)
         hash.extend(ans_y)
     x_char , x_count = run_length_encoding(hash)
     return x_char , x_count    

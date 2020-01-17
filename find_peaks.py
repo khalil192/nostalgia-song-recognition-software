@@ -2,7 +2,7 @@ from PIL import Image
 import numpy  as np
 import matplotlib.pyplot as plt
 from specgram import max_freqency_limit,max_height,max_width
-from max_list import calc_matches,max_sub_list_with_penality
+
 
 def min(a,b):
     if a<b:

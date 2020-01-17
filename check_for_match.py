@@ -1,14 +1,16 @@
 import os
+import shutil
 import pydub 
 from pydub import AudioSegment
 from specgram import png_specgram
 from specgram import max_freqency_limit,max_height,max_width
-from max_list import calc_matches,max_sub_list_with_penality
+from max_list import checkForMatch
 from find_peaks import find_peaks
-from max_list import max_sub_list_with_penality , checkForMatch
+from max_list import   checkForMatch
 from song_resize import trim_leading_silence
 from prepare_song_hash import run_length_encoding
-
+import os.path
+from os import path
 
 
 
@@ -27,15 +29,21 @@ def check_for_match(file_path):
     parts = duration/5
     i=0
     matched=0
+    pwd = os.getcwd()
+    print(pwd)
     while i<parts:
         song_part = song[5000*i:5000*(i+1)]
         if((i+1)*5 > duration):
             break
         i+=1
-        song_part_name = song_path+'/'+song_name +'.'+extension
+        song_part_name = song_path+'/'+song_name +str(i)+'.'+extension
         song_part.export(song_part_name)
         png_specgram(song_part_name)
-        ans_y =find_peaks(song_path+'/'+song_name +'.png')
+        ans_y =find_peaks(song_path+'/'+song_name+str(i) +'.png')
+        os.remove(song_path+'/'+song_name+str(i) +'.png')
+        os.remove(song_path+'/'+song_name+str(i) +'.' + extension)
+        # shutil.move(song_path+'/'+song_name +'.png' , pwd + '/image_cut/' +song_part_name +'.png' )
+        # shutil.move(song_path+'/'+song_name +'.'+extension , pwd + 'audio_cut/' +song_part_name +'.'+extension )
         #ans_y is hashed info
         matched = 0
         song_hash_char , song_hash_count = run_length_encoding(ans_y)
