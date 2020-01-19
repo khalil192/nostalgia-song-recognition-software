@@ -1,8 +1,8 @@
 import pydub
 from pydub import AudioSegment
-from specgram import png_specgram
-from song_resize import song_resize
-from find_peaks import find_peaks
+from ..generateFingerPrint.specgram import png_specgram
+from ..generateFingerPrint.song_resize import song_resize
+from ..generateFingerPrint.find_peaks import find_peaks
 import shutil
 import os
 import os.path

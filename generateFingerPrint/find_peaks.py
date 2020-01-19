@@ -1,7 +1,7 @@
 from PIL import Image
 import numpy  as np
 import matplotlib.pyplot as plt
-from specgram import max_freqency_limit,max_height,max_width
+from ..generateFingerPrint.specgram import max_freqency_limit,max_height,max_width
 
 
 def min(a,b):

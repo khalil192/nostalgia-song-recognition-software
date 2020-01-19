@@ -1,7 +1,7 @@
-# 
+
 
 def show_songs_in_database():
-    with open('song_hashes.txt','r') as file:
+    with open('/Users/khalilshaik/Desktop/projects/nostalgia/dataBase/song_hashes.txt','r') as file:
             song_name = file.readline()
             song_char = file.readline()
             song_char_count = file.readline()

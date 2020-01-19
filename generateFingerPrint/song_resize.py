@@ -1,6 +1,6 @@
 import pydub
 from pydub import AudioSegment
-from specgram import png_specgram
+from ..generateFingerPrint.specgram import png_specgram
 
 def trim_leading_silence(sound, silence_threshold=-50.0, chunk_size=10):
     trim_ms = 0  # ms

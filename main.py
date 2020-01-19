@@ -1,9 +1,9 @@
 from tkinter import filedialog
 from tkinter import *
-from check_for_match import check_for_match
-from prepare_song_hash import song_hash,add_hash_to_database
+from .compareTwoFingerPrints.check_for_match import check_for_match
+from .generateFingerPrint.prepare_song_hash import song_hash,add_hash_to_database
 from functools import partial
-from show_songs_in_database import show_songs_in_database
+from .dataBase.show_songs_in_database import show_songs_in_database
 import os
 
 

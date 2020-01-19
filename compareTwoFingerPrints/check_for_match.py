@@ -2,13 +2,12 @@ import os
 import shutil
 import pydub 
 from pydub import AudioSegment
-from specgram import png_specgram
-from specgram import max_freqency_limit,max_height,max_width
-from max_list import checkForMatch
-from find_peaks import find_peaks
-from max_list import   checkForMatch
-from song_resize import trim_leading_silence
-from prepare_song_hash import run_length_encoding
+from ..generateFingerPrint.specgram import png_specgram
+from ..generateFingerPrint.specgram import max_freqency_limit,max_height,max_width
+from .max_list import checkForMatch
+from ..generateFingerPrint.find_peaks import find_peaks
+from ..generateFingerPrint.song_resize import trim_leading_silence
+from ..generateFingerPrint.prepare_song_hash import run_length_encoding
 import os.path
 from os import path
 
