@@ -46,7 +46,7 @@ def check_for_match(file_path):
         #ans_y is hashed info
         matched = 0
         song_hash_char , song_hash_count = run_length_encoding(ans_y)
-        with open('song_hashes.txt','r') as file:
+        with open('database/song_hashes.txt','r') as file:
             current_song_name = file.readline()
             current_hash_char = file.readline() 
             current_hash_count = file.readline()

@@ -3,7 +3,7 @@ from tkinter import *
 from .compareTwoFingerPrints.check_for_match import check_for_match
 from .generateFingerPrint.prepare_song_hash import song_hash,add_hash_to_database
 from functools import partial
-from .dataBase.show_songs_in_database import show_songs_in_database
+from database.show_songs_in_database import show_songs_in_database
 import os
 
 

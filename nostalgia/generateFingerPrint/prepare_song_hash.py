@@ -7,6 +7,8 @@ import shutil
 import os
 import os.path
 from os import path
+
+
 def run_length_encoding(hash):
     # with open('normal.txt','a') as file:
     #     for i in hash:
@@ -63,12 +65,12 @@ def add_hash_to_database(song_file):
     except :
         song_name = song_file
     hashed_x, hashed_count = song_hash(song_file)
-    with open('song_hashes.txt','a') as file:
+    with open('database/song_hashes.txt','a') as file:
         file.write(song_name+'\n')
         for i in hashed_x:
             file.write(i)
         file.write('\n')   
-    with open('song_hashes.txt','a') as file:
+    with open('database/song_hashes.txt','a') as file:
         for i in hashed_count:
             file.write(str(i) + ' ')
         file.write('\n')   
