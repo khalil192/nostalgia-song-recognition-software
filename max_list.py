@@ -1,6 +1,6 @@
 import random
 
-min_no_matches_to_verify = 80
+min_no_matches_to_verify = 90
 min_no_to_check = 10
 min_no_correct = 5
 max_freq_diff = 10
@@ -41,44 +41,18 @@ def calc_matches(x,y,i,j):
     return penality,matches    
 
 
-# def max_sub_list_with_penality(x,y):
-#     m = len(x)
-#     n = len(y)
-#     matrix = [[0 for k in range(n+1)] for l in range(m+1)] 
-#     max_matches = 0
-#     for i in range(m + 1): 
-#         for j in range(n + 1): 
-#             if (i == 0 or j == 0): 
-#                 # print("this is done")
-#                 matrix[i][j] = 0
-#             elif (x[i-1] == y[j-1]):
-#                 # print('no thisa is ') 
-#                 penality,matches= calc_matches(x,y,i-1,j-1)
-#                 matrix[i][j] = matches 
-#                 max_matches = max(max_matches, matrix[i][j]) 
-#                 if(max_matches >min_no_matches_to_verify):
-#                     print('matches = ',max_matches)
-#                     return True
-#             else: 
-#                 matrix[i][j] = 0    
-#     if(max_matches < min_no_matches_to_verify):
-#         print(max_matches)
-#         return False
-
 
 #it is meaningful to start with a match rather than a penalty
 #look for the first match and then start for the check of matches..
 
-
-
 def checkForMatch(list1 , list2 , count1 , count2):
-    numX = len(list1)
+    numX = len(list1) -1
     numY = len(list2)
     i = 0
     j = 0
     allowed_penalty = 10
     yRange = min(5, numY)
-    xRange = len(list1)
+    xRange = len(list1) -1
     maxMatches = 0
     for yStart in range(0,yRange):
         for xStart in range(xRange):
@@ -123,14 +97,4 @@ def checkForMatch(list1 , list2 , count1 , count2):
                 return True
     print(maxMatches)
     return False 
-
-
-
-# ans , num = numMatches(['a','x','y' ,'z'],['a', 'x','y' ,'z'],[3,2,3,4],[5,3,2,4])
-
-# print(num)
-
-
-
-
 
