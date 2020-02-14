@@ -43,3 +43,5 @@ if __name__ == '__main__':
     
     Exit_button.pack()
     root.mainloop()
+
+#python3 -m nostalgia.main run with this command..

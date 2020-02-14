@@ -30,6 +30,8 @@ def check_for_match(file_path):
     matched=0
     pwd = os.getcwd()
     print(pwd)
+    yetAnswer = "noSong"
+    yetMaximum = -1
     while i<parts:
         song_part = song[5000*i:5000*(i+1)]
         if((i+1)*5 > duration):
@@ -53,8 +55,6 @@ def check_for_match(file_path):
             current_hash_char = [x for x in current_hash_char]
             current_hash_count = [int(x) for x in current_hash_count.split()]
             matched = 0
-            yetAnswer = "noSong"
-            yetMaximum = -1
             while(current_song_name and  matched ==0):      
                 print('checking with ',current_song_name)
                 result, maxMatches = checkForMatch(current_hash_char,song_hash_char,current_hash_count,song_hash_count)
@@ -75,10 +75,10 @@ def check_for_match(file_path):
                 Final_answer = False
         if(matched ==1):
             return
-    if(matched == 0 and yetAnswer == "noSong"):
+    if((matched == 0 and yetAnswer == "noSong")or yetMaximum < 50):
         Final_answer = False
         print('there was no match in the database') 
-    elif(yetMaximum > 60) :
+    elif(yetMaximum > 50) :
         print("the song is most likely to be matched with " + yetAnswer)
 # if __name__ == '__main__':
     # check_song = '/Users/khalilshaik/Desktop/spectre/music/rockstar\ -\ post\ malone0.mp3'

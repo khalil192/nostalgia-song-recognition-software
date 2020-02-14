@@ -82,7 +82,7 @@ def checkForMatch(list1 , list2 , count1 , count2):
                     break
                 if(matches >= min_no_matches_to_verify):
                     print(matches)
-                    return True
+                    return True,matches
                 if(xCount[i]  < yCount[j]):
                     i += 1
                 elif(yCount[j] < xCount[i]):
@@ -94,7 +94,7 @@ def checkForMatch(list1 , list2 , count1 , count2):
             # print(maxMatches, penalty)
             if(matches >= min_no_matches_to_verify):
                 print(matches)
-                return True
+                return True,matches
     print(maxMatches)
     return False , maxMatches
 
