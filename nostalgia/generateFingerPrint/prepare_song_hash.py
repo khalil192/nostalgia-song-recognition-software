@@ -52,7 +52,7 @@ def song_hash(song_to_add):
         # shutil.move(song_path+ '/' + song_name + str(i) + '.png' ,pwd + '/image_cut/'+  song_name + str(i) + '.png' )
         # shutil.move(song_path+ '/' + song_name + str(i) +'.'+ extension ,pwd +'/audio_cut/' + song_name + str(i) + '.'+extension)
         os.remove(song_path+ '/' +song_name + str(i) + '.png')
-        os.remove(song_path+ '/' +song_name + str(i) +'.'+ extension)
+        # os.remove(song_path+ '/' +song_name + str(i) +'.'+ extension)
         hash.extend(ans_y)
     x_char , x_count = run_length_encoding(hash)
     return x_char , x_count    

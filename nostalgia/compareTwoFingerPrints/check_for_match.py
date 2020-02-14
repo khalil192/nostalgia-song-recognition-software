@@ -53,26 +53,33 @@ def check_for_match(file_path):
             current_hash_char = [x for x in current_hash_char]
             current_hash_count = [int(x) for x in current_hash_count.split()]
             matched = 0
+            yetAnswer = "noSong"
+            yetMaximum = -1
             while(current_song_name and  matched ==0):      
                 print('checking with ',current_song_name)
-                result = checkForMatch(current_hash_char,song_hash_char,current_hash_count,song_hash_count)
+                result, maxMatches = checkForMatch(current_hash_char,song_hash_char,current_hash_count,song_hash_count)
                 if(result == True):
                     print('the song is matched with ', current_song_name) 
                     matched =1
                     Final_answer = True
-                current_song_name = file.readline()
-                current_hash_char = file.readline() 
+                else :
+                    if(maxMatches > yetMaximum):
+                        yetMaximum = maxMatches
+                        yetAnswer = current_song_name
+                current_song_name  = file.readline()
+                current_hash_char  = file.readline() 
                 current_hash_count = file.readline()
-                current_hash_char = [x for x in current_hash_char]
+                current_hash_char  = [x for x in current_hash_char]
                 current_hash_count = [int(x) for x in current_hash_count.split()]  
             if(matched == 0):
                 Final_answer = False
         if(matched ==1):
             return
-    if(matched == 0):
+    if(matched == 0 and yetAnswer == "noSong"):
         Final_answer = False
         print('there was no match in the database') 
-
+    elif(yetMaximum > 60) :
+        print("the song is most likely to be matched with " + yetAnswer)
 # if __name__ == '__main__':
     # check_song = '/Users/khalilshaik/Desktop/spectre/music/rockstar\ -\ post\ malone0.mp3'
     # check_for_match(check_song)

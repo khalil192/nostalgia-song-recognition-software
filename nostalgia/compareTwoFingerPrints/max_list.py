@@ -96,5 +96,5 @@ def checkForMatch(list1 , list2 , count1 , count2):
                 print(matches)
                 return True
     print(maxMatches)
-    return False 
+    return False , maxMatches
 
