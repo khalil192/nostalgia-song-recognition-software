@@ -53,7 +53,7 @@ a sample mel-scale spectrogram
 ![mel-scale spectrogram](https://miro.medium.com/max/768/1*MoiYQrW3Qaft6lfPQYbUbw.png)
 
 simplified flowchart explaining the working
-![flowchart](https://drive.google.com/file/d/1uKinQDtI5ne6mUhcXJwB4lbWiVSBfaKu/view?usp=sharing)
+![flowchart](https://github.com/khalil192/nostalgia-song-recognition-software/blob/master/nostalgia/nostalgia_flow_chart.png)
 
 
 
