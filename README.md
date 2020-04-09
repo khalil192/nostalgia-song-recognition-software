@@ -52,5 +52,9 @@ point in time a music signal can have a certain frequency, which is the result o
 a sample mel-scale spectrogram 
 ![mel-scale spectrogram](https://miro.medium.com/max/768/1*MoiYQrW3Qaft6lfPQYbUbw.png)
 
+simplified flowchart explaining the working
+![flowchart](https://drive.google.com/file/d/1uKinQDtI5ne6mUhcXJwB4lbWiVSBfaKu/view?usp=sharing)
+
+
 
 
