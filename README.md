@@ -56,7 +56,7 @@ point in time a music signal can have a certain frequency, which is the result o
 a sample mel-scale spectrogram 
 ![mel-scale spectrogram](https://miro.medium.com/max/768/1*MoiYQrW3Qaft6lfPQYbUbw.png)
 
-#FlowChart
+# FlowChart
 
 simplified flowchart explaining the working
 ![flowchart](https://github.com/khalil192/nostalgia-song-recognition-software/blob/master/nostalgia/nostalgia_flow_chart.png)
