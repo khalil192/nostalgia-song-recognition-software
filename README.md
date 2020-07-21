@@ -1,5 +1,9 @@
-# nostalgia---song-recognition-software
+# nostalgia---song-recognition-software - Desktop Application 
+
 Algorithm and software for Acoustic fingerprinting and song recognition
+
+for quick understanding of high level design [Go to FlowChart](#FlowChart)
+
 
 ## project outline <br/>
 **Problem Statement / Hypothesis** 
@@ -51,6 +55,8 @@ point in time a music signal can have a certain frequency, which is the result o
 
 a sample mel-scale spectrogram 
 ![mel-scale spectrogram](https://miro.medium.com/max/768/1*MoiYQrW3Qaft6lfPQYbUbw.png)
+
+#FlowChart
 
 simplified flowchart explaining the working
 ![flowchart](https://github.com/khalil192/nostalgia-song-recognition-software/blob/master/nostalgia/nostalgia_flow_chart.png)
